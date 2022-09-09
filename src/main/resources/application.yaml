@@ -1,8 +1,6 @@
 spring:
-  profiles:
-    active: '@spring.profiles.active@'
   liquibase:
-    changeLog: "classpath:db/db.changelog-master.yml"
+    changeLog: "classpath:/db/changelog-master.yml"
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
   datasource:
