@@ -1,6 +1,6 @@
 url: jdbc:postgresql://localhost:5432/postgres
 driver: org.postgresql.Driver
-diffChangeLogFile: src/main/resources/changelog.yml
-referenceUrl: hibernate:spring:pl.polsl.PerformanceTestsSpringBoot.entities
+diffChangeLogFile: src/main/resources/db/changelog_1.yml
+referenceUrl: hibernate:spring:pl.polsl.PerformanceTestsSpringBoot.entities?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=pl.polsl.PerformanceTestsSpringBoot.config.CustomPhysicalNamingStrategy&hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
 username: postgres
 password: root

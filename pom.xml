@@ -12,9 +12,9 @@
 	<artifactId>Performance-Tests-Spring-Boot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Performance-Tests-Spring-Boot</name>
-	<description>The project includes performance tests of the spring boot framework</description>
+	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>18</java.version>
+		<java.version>11</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -29,10 +29,16 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
-			<version>4.3.3</version>
+			<version>4.15.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-jdbc</artifactId>
 		</dependency>
 
 		<dependency>
@@ -60,22 +66,34 @@
 	<build>
 		<plugins>
 			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+						</exclude>
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.liquibase</groupId>
 				<artifactId>liquibase-maven-plugin</artifactId>
-				<version>4.3.3</version>
+				<version>4.15.0</version>
 				<configuration>
 					<changeLogFile>src/main/resources/db/db.changelog-master.yml</changeLogFile>
 					<propertyFile>liquibase-plugin.yml</propertyFile>
-					<diffChangeLogFile>src/main/resources/db/changelog/changelog_${maven.build.timestamp}.yml
-					</diffChangeLogFile>
+<!--					<diffChangeLogFile>src/main/resources/db/changelog/changelog_${maven.build.timestamp}.yml-->
+<!--					</diffChangeLogFile>-->
 					<logging>info</logging>
 				</configuration>
 				<dependencies>
-				<dependency>
-					<groupId>org.liquibase.ext</groupId>
-					<artifactId>liquibase-hibernate5</artifactId>
-					<version>4.3.3</version>
-				</dependency>
+					<dependency>
+						<groupId>org.liquibase.ext</groupId>
+						<artifactId>liquibase-hibernate5</artifactId>
+						<version>4.3.3</version>
+					</dependency>
 					<dependency>
 						<groupId>javax.validation</groupId>
 						<artifactId>validation-api</artifactId>
@@ -92,18 +110,6 @@
 						<version>0.7.0</version>
 					</dependency>
 				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,40 @@
+databaseChangeLog:
+- changeSet:
+    id: 1663328513728-1
+    author: Patryk (generated)
+    changes:
+    - createTable:
+        columns:
+        - column:
+            constraints:
+              nullable: false
+              primaryKey: true
+              primaryKeyName: t_userPK
+            name: c_id
+            type: UUID
+        - column:
+            name: c_email
+            type: VARCHAR(255)
+        - column:
+            constraints:
+              nullable: false
+            name: c_password
+            type: VARCHAR(255)
+        tableName: t_user
+- changeSet:
+    id: 1663328513728-2
+    author: Patryk (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: c_email
+        constraintName: UC_T_USERC_EMAIL_COL
+        tableName: t_user
+- changeSet:
+    id: 1663328513728-3
+    author: Patryk (generated)
+    changes:
+    - addUniqueConstraint:
+        columnNames: c_id
+        constraintName: UC_T_USERC_ID_COL
+        tableName: t_user
+

@@ -8,6 +8,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.UUID;
 
+
 @Data
 @Entity
 @Table(name = "\"user\"")
@@ -21,4 +22,9 @@ public class User {
     @Column(updatable = false, nullable = false, unique = true)
     protected UUID id;
 
+    @Column(unique = true)
+    private String email;
+
+    @Column(nullable = false)
+    private String password;
 }
